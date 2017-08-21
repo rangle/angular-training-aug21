@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-like',
@@ -8,8 +8,14 @@ import { Component, OnInit, Input } from '@angular/core';
 export class LikeComponent implements OnInit {
 
   @Input() count: number;
+  @Output() countChange = new EventEmitter<number>();
 
   constructor() { }
+
+  onClick() {
+    this.countChange
+      .next(this.count + 1);
+  }
 
   ngOnInit() {
   }

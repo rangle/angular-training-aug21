@@ -1,6 +1,7 @@
 <button
-  class="pa2 input-reset bn flex items-center"
+  class="pa2 input-reset bn flex items-center bg-near-white br2 mt3"
   [ngClass]="{ 'red': count > 0 }"
+  (click)="onClick()"
 >
   <svg class="dib w2 h2" viewBox="0 0 20 20">
     <path fill="currentColor"
