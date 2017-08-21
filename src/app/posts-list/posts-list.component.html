@@ -1,0 +1,12 @@
+<section class="mw7 center">
+  <h2 class="athelas ph3 ph0-l">My Blog {{ count }}</h2>
+  <app-post
+    *ngFor="let post of posts"
+    [title]="post.title"
+    [body]="post.body"
+    [user]="post.user"
+    [date]="post.date"
+  >
+    <app-like [count]="post.likeCount"></app-like>
+  </app-post>
+</section>
