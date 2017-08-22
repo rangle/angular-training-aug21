@@ -10,6 +10,7 @@ import { ExcerptPipe } from './excerpt.pipe';
 
 import { ApiService } from './api.service';
 import { PostsService } from './posts.service';
+import { UsersService } from './users.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,11 @@ import { PostsService } from './posts.service';
     BrowserModule,
     HttpModule
   ],
-  providers: [ApiService, PostsService],
+  providers: [
+    ApiService,
+    PostsService,
+    UsersService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
