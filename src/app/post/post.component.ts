@@ -12,24 +12,15 @@ export class PostComponent implements OnInit {
   @Input() date: Date;
 
   dateFormat = 'short';
-  greeting: Promise<string>;
 
   constructor() { }
 
   ngOnInit() {
-    this.greeting = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve('Hello from promise!')
-      }, 2000);
-    });
-    // .then(data => {
-    //   this.greeting = data;
-    // });
   }
 
   toggleDateFormat() {
     if (this.dateFormat === 'fullDate'){
-      this.dateFormat = 'short';
+      this.dateFormat = 'shortDate';
     } else {
       this.dateFormat = 'fullDate';
     }
