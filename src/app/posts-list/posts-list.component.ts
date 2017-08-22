@@ -13,11 +13,6 @@ export class PostsListComponent implements OnInit {
     private postsService: PostsService
   ) {}
 
-  updateLike(count, post) {
-    post.likeCount = count;
-  }
-
   ngOnInit() {
-    this.posts = this.postsService.postsState;
   }
 }
