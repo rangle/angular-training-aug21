@@ -3,7 +3,10 @@
   <div>
     <h2 class="f3 athelas mt0 lh-title">{{ title }}</h2>
     <p class="f5 f4-l lh-copy athelas">
-      {{ body }}
+      {{ body | excerpt:10 }}
+    </p>
+    <p class="blue">
+      {{ greeting | async }}
     </p>
   </div>
 
@@ -11,7 +14,13 @@
     By <span class="ttu">{{ author }}</span>
   </p>
 
-  <time class="f6 db gray" datetime="">{{ date }}</time>
+  {{ 100.12345 | currency:'EUR':true:'1.2' }}
+
+  <time class="f6 db gray"
+    [attr.datetime]="date"
+    (click)="toggleDateFormat()">
+    {{ date | date:dateFormat }}
+  </time>
 
   <ng-content></ng-content>
 

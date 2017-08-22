@@ -5,13 +5,15 @@ import { AppComponent } from './app.component';
 import { PostsListComponent } from './posts-list/posts-list.component';
 import { PostComponent } from './post/post.component';
 import { LikeComponent } from './like/like.component';
+import { ExcerptPipe } from './excerpt.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostsListComponent,
     PostComponent,
-    LikeComponent
+    LikeComponent,
+    ExcerptPipe
   ],
   imports: [
     BrowserModule
