@@ -7,7 +7,8 @@ export class PostsService {
 
   // Create the state subject
   private stateSubject = new BehaviorSubject({
-    posts: []
+    posts: [],
+    error: undefined,
   });
   // Publish state subject as an observable
   public state$ = this.stateSubject
@@ -15,6 +16,7 @@ export class PostsService {
     .refCount();
   // Selector for accessing state properties
   public posts$ = this.state$.pluck('posts');
+  public error$ = this.state$.pluck('error');
 
   constructor(private apiService: ApiService) {
     this.getAll();
@@ -23,12 +25,20 @@ export class PostsService {
   getAll() {
     this.apiService.get('/posts')
       .map(posts => posts.map(this.normalizePost))
-      .subscribe((posts) => {
-        console.log(posts);
-        this.stateSubject.next({
-          posts: posts,
-        });
-      });
+      .subscribe(
+        (posts) => {
+          this.stateSubject.next({
+            posts: posts,
+            error: undefined,
+          });
+        },
+        (err: string) => {
+          this.stateSubject.next({
+            posts: [],
+            error: err,
+          });
+        },
+      );
   }
 
   normalizePost(post) {
@@ -53,7 +63,10 @@ export class PostsService {
       return post;
     });
     // push the state to the observable
-    this.stateSubject.next({ posts: nextPosts });
+    this.stateSubject.next({
+      posts: nextPosts,
+      error: undefined,
+    });
   }
 
 }
