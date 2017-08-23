@@ -1,1 +1,15 @@
+<header class="flex items-center mw7 center">
+  <h2 class="athelas ph3 ph0-l flex-auto">My Blog</h2>
+  <nav>
+    <a class="link blue mr3"
+      [routerLink]="['/posts']">
+      home
+    </a>
+    <a class="link blue"
+      [routerLink]="['/posts', 'new']">
+      new
+    </a>
+  </nav>
+</header>
+
 <router-outlet></router-outlet>
