@@ -69,4 +69,10 @@ export class PostsService {
     });
   }
 
+  addPost(post) {
+    this.apiService.post('/posts', post)
+      .subscribe((data) => {
+        console.log(data);
+      })
+  }
 }

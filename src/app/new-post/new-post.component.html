@@ -1,3 +1,39 @@
-<p>
-  new-post works!
-</p>
+<form #newPostForm="ngForm"
+  (ngSubmit)="addNewPost(newPostForm.value)">
+
+  <p *ngIf="newPostForm.touched && newPostForm.invalid">
+    this is a required field
+  </p>
+
+  <div class="mb3">
+    <label>Title</label>
+    <input type="text"
+      name="title"
+      #title="ngModel"
+      ngModel
+      minlength="10"
+      required>
+    <div class="red"
+      *ngIf="title.touched && title.invalid">
+      <span *ngIf="title.hasError('required')">This is a required field</span>
+      <span *ngIf="title.hasError('minlength')">This has to be at least 10 chars</span>
+    </div>
+  </div>
+
+  <div class="mb3">
+    <label>Body</label>
+    <input type="text"
+      name="body"
+      #body="ngModel"
+      ngModel
+      required>
+    <div class="red"
+      *ngIf="body.touched && body.invalid">
+      This is a required field
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="newPostForm.invalid">
+    Submit
+  </button>
+</form>

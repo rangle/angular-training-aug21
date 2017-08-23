@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { PostsListComponent } from './posts-list/posts-list.component';
@@ -34,6 +35,7 @@ import { NewPostComponent } from './new-post/new-post.component';
     BrowserModule,
     HttpModule,
     RouterModule.forRoot(routeConfig),
+    FormsModule,
   ],
   providers: [
     ApiService,
