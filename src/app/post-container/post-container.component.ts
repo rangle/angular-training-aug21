@@ -27,10 +27,8 @@ export class PostContainerComponent implements OnInit {
     )
     .map(this.findPost)
     .subscribe((post) => {
-      console.log(post);
       this.post = post;
     });
-
   }
 
   findPost([id, posts]) {

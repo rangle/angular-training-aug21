@@ -13,3 +13,17 @@
   [user]="post.user"
 >
 </app-post>
+
+<div class="pa bg-near-white pa4">
+  <a class="link blue"
+    [routerLink]="['./comments']">
+    comments
+  </a>
+
+  <a class="link blue"
+    [routerLink]="['./related']">
+    related
+  </a>
+
+  <router-outlet></router-outlet>
+</div>

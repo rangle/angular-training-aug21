@@ -14,6 +14,9 @@ import { PostsService } from './posts.service';
 import { UsersService } from './users.service';
 import { routeConfig } from './app.routes';
 import { PostContainerComponent } from './post-container/post-container.component';
+import { CommentsComponent } from './comments/comments.component';
+import { RelatedComponent } from './related/related.component';
+import { NewPostComponent } from './new-post/new-post.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { PostContainerComponent } from './post-container/post-container.componen
     PostComponent,
     LikeComponent,
     ExcerptPipe,
-    PostContainerComponent
+    PostContainerComponent,
+    CommentsComponent,
+    RelatedComponent,
+    NewPostComponent
   ],
   imports: [
     BrowserModule,
