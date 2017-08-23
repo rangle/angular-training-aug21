@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class PostsService {
@@ -18,7 +19,10 @@ export class PostsService {
   public posts$ = this.state$.pluck('posts');
   public error$ = this.state$.pluck('error');
 
-  constructor(private apiService: ApiService) {
+  constructor(
+    private apiService: ApiService,
+    private router: Router,
+  ) {
     this.getAll();
   }
 
@@ -71,8 +75,17 @@ export class PostsService {
 
   addPost(post) {
     this.apiService.post('/posts', post)
-      .subscribe((data) => {
-        console.log(data);
-      })
+      .map(this.normalizePost)
+      .subscribe((post) => {
+        const currentPosts = this.stateSubject
+         .getValue().posts;
+
+        this.stateSubject.next({
+          error: undefined,
+          posts: [...currentPosts, post]
+        });
+
+        this.router.navigate(['/posts']);
+      });
   }
 }
