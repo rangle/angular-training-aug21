@@ -17,5 +17,9 @@
       [count]="post.likeCount"
       (countChange)="postsService.updateLike(post.id)">
     </app-like>
+    <a [routerLink]="['/posts', post.id]"
+      class="link blue">
+      Read More
+    </a>
   </app-post>
 </section>

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { PostsListComponent } from './posts-list/posts-list.component';
@@ -11,6 +12,8 @@ import { ExcerptPipe } from './excerpt.pipe';
 import { ApiService } from './api.service';
 import { PostsService } from './posts.service';
 import { UsersService } from './users.service';
+import { routeConfig } from './app.routes';
+import { PostContainerComponent } from './post-container/post-container.component';
 
 @NgModule({
   declarations: [
@@ -18,11 +21,13 @@ import { UsersService } from './users.service';
     PostsListComponent,
     PostComponent,
     LikeComponent,
-    ExcerptPipe
+    ExcerptPipe,
+    PostContainerComponent
   ],
   imports: [
     BrowserModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot(routeConfig),
   ],
   providers: [
     ApiService,
