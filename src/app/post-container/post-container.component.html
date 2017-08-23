@@ -1,3 +1,15 @@
-<p class="f1">
-  post-container works! {{ id }}
+<p *ngIf="!post">
+  Could not find post. Go back to the
+  <a [routerLink]="['/posts']">
+    home page
+  </a>
 </p>
+
+<app-post
+  *ngIf="post"
+  [title]="post.title"
+  [body]="post.body"
+  [date]="post.date"
+  [user]="post.user"
+>
+</app-post>
