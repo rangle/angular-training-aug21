@@ -25,7 +25,7 @@ export class PostsService {
     private apiService: ApiService,
     private router: Router,
   ) {
-    // this.getAll();
+    this.getAll();
   }
 
   filterPosts({ query, posts }) {

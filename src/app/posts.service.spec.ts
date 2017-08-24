@@ -1,8 +1,11 @@
 import { PostsService } from './posts.service';
 import { ApiService } from './api.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
-const mockApiService = {} as ApiService;
+const mockApiService = {
+  get: () => Observable.of([]),
+} as any;
 const mockRouter = {} as Router;
 
 fdescribe('PostsService', () => {
@@ -45,4 +48,12 @@ fdescribe('PostsService', () => {
     expect(result).toEqual([{ title: 'b' }]);
   });
 
+  it('should get all posts', () => {
+    const spy = spyOn(mockApiService, 'get').and.returnValue(Observable.of([]));
+    postsService.getAll();
+
+    expect(spy.calls.any()).toBeTruthy;
+    expect(spy.calls.count()).toBe(1);
+    expect(spy.calls.argsFor(0)).toEqual(['/posts']);
+  });
 });
