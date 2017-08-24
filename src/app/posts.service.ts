@@ -19,12 +19,21 @@ export class PostsService {
   // Selector for accessing state properties
   public posts$ = this.state$.pluck('posts');
   public error$ = this.state$.pluck('error');
+  public filteredPosts$ = this.state$.map(this.filterPosts);
 
   constructor(
     private apiService: ApiService,
     private router: Router,
   ) {
     this.getAll();
+  }
+
+  filterPosts({ query, posts }) {
+    return posts.filter(post => {
+      return post.title
+        .toLowerCase()
+        .includes(query.toLowerCase());
+    });
   }
 
   updateState(newState) {
@@ -84,5 +93,9 @@ export class PostsService {
 
         this.router.navigate(['/posts']);
       });
+  }
+
+  updateQuery(query) {
+    this.updateState({ query: query });
   }
 }
