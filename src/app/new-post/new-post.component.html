@@ -1,10 +1,6 @@
 <form #newPostForm="ngForm"
   (ngSubmit)="addNewPost(newPostForm.value)">
 
-  <p *ngIf="newPostForm.touched && newPostForm.invalid">
-    this is a required field
-  </p>
-
   <div class="mb3">
     <label>Title</label>
     <input type="text"

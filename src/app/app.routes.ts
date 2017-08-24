@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
-import { PostsListComponent } from './posts-list/posts-list.component';
 import { PostContainerComponent } from './post-container/post-container.component';
 import { CommentsComponent } from './comments/comments.component';
 import { RelatedComponent } from './related/related.component';
 import { NewPostComponent } from './new-post/new-post.component';
+import { HomeContainerComponent } from './home-container/home-container.component'
 
 export const routeConfig: Routes = [
   {
@@ -11,7 +11,7 @@ export const routeConfig: Routes = [
     redirectTo: 'posts',
     pathMatch: 'full',
   },
-  { path: 'posts', component: PostsListComponent },
+  { path: 'posts', component: HomeContainerComponent },
   {
     path: 'posts/new',
     component: NewPostComponent,

@@ -1,12 +1,7 @@
 <section class="mw7 center">
 
-  <p *ngIf="error"
-    class="pa3 ba b--gold bg-light-yellow gold br2 ma3">
-    {{ error }}
-  </p>
-
   <app-post
-    *ngFor="let post of postsService.posts$ | async"
+    *ngFor="let post of posts"
     [title]="post.title"
     [body]="post.body"
     [user]="post.user"

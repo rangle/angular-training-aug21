@@ -83,6 +83,8 @@ export class PostsService {
         this.stateSubject.next({
           error: undefined,
           posts: [...currentPosts, post]
+          // currentPosts.push(post)
+          // currentPosts.concat([post])
         });
 
         this.router.navigate(['/posts']);

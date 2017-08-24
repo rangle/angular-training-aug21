@@ -18,6 +18,8 @@ import { PostContainerComponent } from './post-container/post-container.componen
 import { CommentsComponent } from './comments/comments.component';
 import { RelatedComponent } from './related/related.component';
 import { NewPostComponent } from './new-post/new-post.component';
+import { SearchbarComponent } from './searchbar/searchbar.component';
+import { HomeContainerComponent } from './home-container/home-container.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { NewPostComponent } from './new-post/new-post.component';
     PostContainerComponent,
     CommentsComponent,
     RelatedComponent,
-    NewPostComponent
+    NewPostComponent,
+    SearchbarComponent,
+    HomeContainerComponent
   ],
   imports: [
     BrowserModule,
