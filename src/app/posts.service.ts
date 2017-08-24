@@ -11,6 +11,7 @@ export class PostsService {
     posts: [],
     error: undefined,
     query: '',
+    page: 1,
   });
   // Publish state subject as an observable
   public state$ = this.stateSubject

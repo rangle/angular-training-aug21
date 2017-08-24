@@ -12,7 +12,7 @@ export class HomeContainerComponent implements OnInit, OnDestroy {
   subscriptions = [];
 
   constructor(
-    private postsService: PostsService
+    public postsService: PostsService
   ) { }
 
   ngOnInit() {
