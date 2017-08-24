@@ -25,7 +25,7 @@ export class PostsService {
     private apiService: ApiService,
     private router: Router,
   ) {
-    this.getAll();
+    // this.getAll();
   }
 
   filterPosts({ query, posts }) {
@@ -33,6 +33,14 @@ export class PostsService {
       return post.title
         .toLowerCase()
         .includes(query.toLowerCase());
+    });
+  }
+
+  normalizePost(post) {
+    return Object.assign({}, post, {
+      user: 'Robin Darnell',
+      date: new Date(),
+      likeCount: 0,
     });
   }
 
@@ -53,14 +61,6 @@ export class PostsService {
           this.updateState({ error: err });
         },
       );
-  }
-
-  normalizePost(post) {
-    return Object.assign({}, post, {
-      user: 'Robin Darnell',
-      date: new Date(),
-      likeCount: 0,
-    });
   }
 
   updateLike(id) {
