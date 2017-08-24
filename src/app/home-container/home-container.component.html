@@ -1,7 +1,9 @@
 <main class="mw7 center">
-  <app-searchbar></app-searchbar>
-  <app-posts-list
-    [posts]="postsService.posts$ | async"
-  >
+
+  <app-searchbar (queryChange)="updateFilteredPosts($event)">
+  </app-searchbar>
+
+  <app-posts-list [posts]="postsService.posts$ | async">
   </app-posts-list>
+
 </main>

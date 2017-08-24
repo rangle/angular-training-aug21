@@ -24,10 +24,14 @@ export class HomeContainerComponent implements OnInit, OnDestroy {
     this.subscriptions.push(errorSubscription);
   }
 
+  updateFilteredPosts(query) {
+    console.log(query);
+  }
+
   ngOnDestroy() {
     this.subscriptions.forEach(subscription => {
       subscription.unsubscribe();
-    })
+    });
   }
 
 }

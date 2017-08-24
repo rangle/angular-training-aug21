@@ -10,6 +10,7 @@ export class PostsService {
   private stateSubject = new BehaviorSubject({
     posts: [],
     error: undefined,
+    query: '',
   });
   // Publish state subject as an observable
   public state$ = this.stateSubject
@@ -26,21 +27,21 @@ export class PostsService {
     this.getAll();
   }
 
+  updateState(newState) {
+    const currentState = this.stateSubject.getValue();
+    const nextState = { ...currentState, ...newState };
+    this.stateSubject.next(nextState);
+  }
+
   getAll() {
     this.apiService.get('/posts')
       .map(posts => posts.map(this.normalizePost))
       .subscribe(
         (posts) => {
-          this.stateSubject.next({
-            posts: posts,
-            error: undefined,
-          });
+          this.updateState({ posts: posts });
         },
         (err: string) => {
-          this.stateSubject.next({
-            posts: [],
-            error: err,
-          });
+          this.updateState({ error: err });
         },
       );
   }
@@ -67,10 +68,7 @@ export class PostsService {
       return post;
     });
     // push the state to the observable
-    this.stateSubject.next({
-      posts: nextPosts,
-      error: undefined,
-    });
+    this.updateState({ posts: nextPosts });
   }
 
   addPost(post) {
@@ -80,11 +78,8 @@ export class PostsService {
         const currentPosts = this.stateSubject
          .getValue().posts;
 
-        this.stateSubject.next({
-          error: undefined,
-          posts: [...currentPosts, post]
-          // currentPosts.push(post)
-          // currentPosts.concat([post])
+        this.updateState({
+          posts: [...currentPosts, post],
         });
 
         this.router.navigate(['/posts']);
